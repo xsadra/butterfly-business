@@ -5,11 +5,13 @@ import java.time.LocalDate;
 public class Purchase {
     private LocalDate date;
     private String cardNumber;
+    private String creditCardIssuer;
     private Double amountPaid;
 
-    private Purchase(LocalDate date, String cardNumber, Double amountPaid) {
+    private Purchase(LocalDate date, String cardNumber, String creditCardIssuer, Double amountPaid) {
         this.date = date;
         this.cardNumber = cardNumber;
+        this.creditCardIssuer = creditCardIssuer;
         this.amountPaid = amountPaid;
     }
 
@@ -25,6 +27,10 @@ public class Purchase {
         return cardNumber;
     }
 
+    public String getCreditCardIssuer() {
+        return creditCardIssuer;
+    }
+
     public Double getAmountPaid() {
         return amountPaid;
     }
@@ -32,6 +38,8 @@ public class Purchase {
     public static class PurchaseBuilder {
         private LocalDate date;
         private String cardNumber;
+        private String creditCardIssuer;
+
         private Double amountPaid;
 
         public PurchaseBuilder date(LocalDate date) {
@@ -41,6 +49,11 @@ public class Purchase {
 
         public PurchaseBuilder cardNumber(String cardNumber) {
             this.cardNumber = cardNumber;
+            return this;
+        }
+
+        public PurchaseBuilder creditCardIssuer(String creditCardIssuer) {
+            this.creditCardIssuer = creditCardIssuer;
             return this;
         }
 
@@ -56,10 +69,13 @@ public class Purchase {
             if (cardNumber == null) {
                 throw new IllegalArgumentException("Use the cardNumber method");
             }
+            if (creditCardIssuer == null) {
+                throw new IllegalArgumentException("Use the creditCardIssuer method");
+            }
             if (amountPaid == 0) {
                 throw new IllegalArgumentException("Use the amountPaid method");
             }
-            return new Purchase(date, cardNumber, amountPaid);
+            return new Purchase(date, cardNumber,creditCardIssuer, amountPaid);
         }
     }
 
