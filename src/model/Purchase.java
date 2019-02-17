@@ -15,6 +15,20 @@ public class Purchase {
         this.amountPaid = amountPaid;
     }
 
+    public void setCreditCardIssuer(String creditCardIssuer) {
+        this.creditCardIssuer = creditCardIssuer;
+    }
+
+    @Override
+    public String toString() {
+        return "Purchase{" +
+                "date=" + date +
+                ", cardNumber='" + cardNumber + '\'' +
+                ", creditCardIssuer='" + creditCardIssuer + '\'' +
+                ", amountPaid=" + amountPaid +
+                '}';
+    }
+
     public static PurchaseBuilder builder() {
         return new PurchaseBuilder();
     }
@@ -69,9 +83,11 @@ public class Purchase {
             if (cardNumber == null) {
                 throw new IllegalArgumentException("Use the cardNumber method");
             }
+
             if (creditCardIssuer == null) {
-                throw new IllegalArgumentException("Use the creditCardIssuer method");
+                creditCardIssuer = "";
             }
+
             if (amountPaid == 0) {
                 throw new IllegalArgumentException("Use the amountPaid method");
             }
