@@ -9,13 +9,8 @@ public class StartsWithValidator extends Validator {
     }
 
     @Override
-    public boolean isValid(String cardNumber) {
-        List<String> beginnings = getPossibilities();
-        for (String beginning : beginnings) {
-            if (cardNumber.startsWith(beginning)) {
-                return true;
-            }
-        }
-        return false;
+    public boolean isValid(String cardNumber){
+      return   getPossibilities().stream()
+                .anyMatch(cardNumber::startsWith);
     }
 }

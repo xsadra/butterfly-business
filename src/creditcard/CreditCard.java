@@ -17,13 +17,4 @@ public abstract class CreditCard {
               .allMatch(validator-> validator.isValid(cardNumber));
     }
 
-   /* public boolean isValid(String cardNumber) {
-        for (Validator validator : validators) {
-            if (!validator.isValid(cardNumber)) {
-                return false;
-            }
-        }
-        return true;
-    }
-    */
 }
